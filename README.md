@@ -1,24 +1,25 @@
 # README
+This Project is built on Rails 6
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+As part of this project conatains following things
 
-Things you may want to cover:
+1. It has role based login system
+2. It has integrated CISCO AMP API to fetch the computres and their users information.
+3. I have added Friendly Id to hide the Real computer record ID's in the URL.
+4. I have added Sidekiq configuration to trigger the rake tasks to update DB data from API calls.
+5. I have written some few cucumber specs to test login and signup functionality ( couldn't cover more because of time constraint)
+6. Admin sets the API credentials in dashboard at "services" section.
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+The way to test this app is
 
-* Database creation
+1 . Create an admin using the admin mail ID and password
 
-* Database initialization
+2. After successfully logging in with Admin credentials need to set the API credentials in services section.
 
-* How to run the test suite
+3. Now register a general user with a username in the user activity records so that you can get the activity of that user.
 
-* Services (job queues, cache servers, search engines, etc.)
+4. Now as the scheduler is configured it will autorun the rake tasks to populate the data from API to DB.
 
-* Deployment instructions
-
-* ...
+5. Finally you should see the data populated.
