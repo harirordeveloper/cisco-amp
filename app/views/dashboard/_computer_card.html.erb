@@ -1,0 +1,11 @@
+<div class="card" style="width:350px">
+  <div class="card-body">
+    <h4 class="card-title"><%= computer.hostname %></h4>
+    <p class="card-text">Computer Id : <%= computer.connecter_guid %></p>
+    <p class="card-text"> Operating System : <%= computer.operating_system %></p>
+    <div class="card-footer">
+      <%= link_to "see more details", computer_path(computer.slug), class: "btn btn-primary" %></br>
+      <small class="text-muted">Last updated <%= time_ago_in_words(computer.updated_at) %> ago </small>
+    </div>
+  </div>
+</div>

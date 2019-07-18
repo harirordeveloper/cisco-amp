@@ -33,3 +33,6 @@ module ChangeMyInfo
     config.generators.system_tests = nil
   end
 end
+
+
+require 'will_paginate'

@@ -1,0 +1,4 @@
+<div class="card-columns">
+  <%= render partial: 'computer_card', collection: @computers, as: :computer %>
+  <%= will_paginate @computers, renderer: WillPaginateInfinite::InfinitePagination %>
+</div>

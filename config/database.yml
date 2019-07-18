@@ -23,6 +23,9 @@ production:
   <<: *default
   database: change_my_info_production
 
-test:
+test: &test
   <<: *default
   database: change_my_info_test
+
+cucumber:
+  <<: *test

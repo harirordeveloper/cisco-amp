@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">
+    <h3> <%= computer.hostname %></h3>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+        <p class="lead">Computer Id : <%= computer.connecter_guid %></p>
+        Operating System : <%= computer.operating_system %> </br>
+        Active : <%= computer.active ? 'Yes' : 'No' %> </br>
+        Connector Version : <%= computer.connector_version %> </br>
+        Internal IP's : <%= computer.internal_ips.join(',') %> </br>
+        External IP : <%= computer.external_ip %> </br>
+        Group GUID : <%= computer.group_guid %> </br>
+        Install Date : <%= computer.install_date %> </br>
+        Last Seen : <%= computer.last_seen %> </br>
+    </blockquote>
+  </div>
+</div>

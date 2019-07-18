@@ -1,0 +1,23 @@
+<ul class="nav nav-pills mb-3" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="vulnarabilities" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Vulanarabilities (<span class="badge"><%= @computer.vulnarabilities.count %></span>)</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="user-activities" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">User Activities (<span class="badge"><%= @computer.user_activities.count %></span>)</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="vulnarabilities">
+    <hr class="my-4">
+    <div class="card-columns">
+      <%= render partial: 'vulnarability', collection: @computer.vulnarabilities, as: :vulnerability %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="user-activities">
+    <% if @computer.user_activities.present? %>
+     <div class="card-columns">
+        <%= render partial: 'activity', collection: @computer.user_activities, as: :activity %>
+      </div>
+    <% end %>
+  </div>
+</div>

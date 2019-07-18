@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <%= activity.user_name %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      User Name : <%= activity.user_name %></br>
+      Severity : <%= activity.severity %></br>
+      Activity File details : </br>
+         File Name : <%= activity.file["file_name"] %></br>
+         File Path : <%= activity.file["file_path"] %></br>
+         Disposition : <%= activity.file["disposition"] %></br>
+         Identity : <%= activity.file.dig("identity", "sha256")%></br></br>
+    </blockquote>
+  </div>
+</div>

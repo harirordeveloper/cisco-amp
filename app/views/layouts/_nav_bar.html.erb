@@ -1,0 +1,63 @@
+<nav class="navbar fixed-top navbar-default navbar-expand-xl navbar-light">
+  <div class="navbar-header d-flex col">
+    <% if user_signed_in? %>
+      <%= link_to authenticated_root_path, class: 'navbar-brand' do %>
+        <i class="fa fa-cube"></i>CISCO <b>AMP</b>
+      <% end %>
+    <% else %>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <i class="fa fa-cube"></i>CISCO <b>AMP</b>
+      <% end %>
+    <% end %>
+    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+      <span class="navbar-toggler-icon"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <!-- Collection of nav links, forms, and other content for toggling -->
+  <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+    <ul class="nav navbar-nav navbar-right ml-auto">
+      <% if user_signed_in? %>
+        <% if policy(:dashboard).show? %>
+          <li class="nav-item">
+            <%= link_to "Services", services_dashboard_index_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to "My Activity", user_activity_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Computers", user_computers_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> <%= current_user.name %> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% if policy(:dashboard).show? %>
+            <li>
+              <%= link_to services_dashboard_index_path, class: "dropdown-item" do %>
+                <i class="fa fa-sliders"></i> Settings
+              <% end %>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+                <i class="fa fa-user-o"></i> Profile
+              <% end %>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                <i class="material-icons">&#xE8AC;</i> Logout
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

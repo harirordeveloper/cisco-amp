@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <%= vulnerability.application %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      Vulnarable Application : <%= vulnerability.application %></br>
+      Vulnarable App Version : <%= vulnerability.version %></br>
+      Vulnarable File details : </br>
+         File Name : <%= vulnerability.file["filename"] %></br>
+         Identity : <%= vulnerability.file["identity"]["sha256"] %></br></br>
+
+      <b>CVES</b> : </br></br>
+      <% vulnerability.cves.each do |cev| %>
+        ID : <%= cev["id"] %></br>
+        CVSS : <%= cev["cvss"] %></br>
+        LINK : <%= cev["link"] %></br></br>
+      <% end %>
+    </blockquote>
+  </div>
+</div>
