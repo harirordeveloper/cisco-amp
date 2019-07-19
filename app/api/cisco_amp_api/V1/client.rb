@@ -24,14 +24,14 @@ module CiscoAmpApi
       end
 
       def computer_vulnarabilities connector_guid
-        request(
+        typheous_request(
           http_method: :get,
           endpoint: API_ENDPOINT + "/computers/#{connector_guid}/vulnerabilities"
         )
       end
 
       def user_trajectory connector_guid
-        request(
+        typheous_request(
           http_method: :get,
           endpoint: API_ENDPOINT + "/computers/#{connector_guid}/user_trajectory"
         )
@@ -46,6 +46,16 @@ module CiscoAmpApi
       def request(http_method:, endpoint:, params: {})
         response = RestClient::Request.execute(url: endpoint, method: http_method, params: params, headers:{ Authorization: @oauth_token} )
         JSON.parse(response.body).with_indifferent_access
+      end
+
+      def typheous_request(http_method:, endpoint:, params: {})
+        Typhoeus::Request.new(
+          endpoint,
+          method: http_method,
+          params: params,
+          headers: { Authorization: @oauth_token },
+          followlocation: true
+        )
       end
     end
   end
