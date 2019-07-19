@@ -68,7 +68,7 @@ namespace :update do
     puts "*** Started populating User Activities ***"
     UserActivity.delete_all
     hydra = Typhoeus::Hydra.new
-    Computer.find_each do |computer|
+    Computer.first(50).each do |computer|
       request = client.user_trajectory(computer.connecter_guid)
       puts request
       UserActivity.transaction do
