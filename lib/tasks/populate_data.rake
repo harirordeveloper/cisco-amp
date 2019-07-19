@@ -5,7 +5,7 @@ namespace :update do
   # This task will make a call to CISCO API client and populate all the Computer data in DB
   task computers: :environment do
     computers = []
-    Computer.delete_all
+    Computer.destroy_all
     computer_data = client.computers[:data]
     puts "*** Started creating Computer from CISCO AMP API ***"
     Computer.transaction do
@@ -33,7 +33,7 @@ namespace :update do
   task computer_vulnarabilities: :environment do
     vulnarabilities = []
     puts "*** Started populating Vulnarabilities of every computer from CISCO AMP API ***"
-    Vulnarability.delete_all
+    Vulnarability.destroy_all
     hydra = Typhoeus::Hydra.new
     Computer.find_each do |computer|
       request = client.computer_vulnarabilities(computer.connecter_guid)
@@ -66,7 +66,7 @@ namespace :update do
   task computer_user_activities: :environment do
     activities = []
     puts "*** Started populating User Activities ***"
-    UserActivity.delete_all
+    UserActivity.destroy_all
     hydra = Typhoeus::Hydra.new
     Computer.first(50).each do |computer|
       request = client.user_trajectory(computer.connecter_guid)

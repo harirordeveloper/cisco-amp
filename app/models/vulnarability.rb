@@ -16,7 +16,7 @@
 #
 
 class Vulnarability < ApplicationRecord
-  belongs_to :computer, dependent: :destroy
+  belongs_to :computer
 
   # This will allow us to strore the JSON data to postgres
   serialize :file, Hash

@@ -24,9 +24,9 @@
 
 class Computer < ApplicationRecord
   extend FriendlyId
-  has_many :user_activities
+  has_many :user_activities, dependent: :destroy
   has_many :users, through: :user_activities
-  has_many :vulnarabilities
+  has_many :vulnarabilities, dependent: :destroy
 
   friendly_id :slug_candidates, use: :slugged
 
