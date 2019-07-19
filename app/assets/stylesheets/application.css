@@ -14,3 +14,5 @@
  *= require_self
  *= require will_paginate_infinite
  */
+
+.padded-container { margin-top: 7%}
